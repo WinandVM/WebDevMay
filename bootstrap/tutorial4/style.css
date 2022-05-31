@@ -1,0 +1,22 @@
+.input-group-text{
+    border-radius: 0 !important;
+    background-color: rgb(28, 28, 28);
+    color: white;
+}
+
+@media all and (max-width:700px) and (min-width:300px){
+    .input-group-text{
+        width: 100% !important;
+    }
+}
+
+.form-control{
+    background-color: cornflowerblue;
+    border-radius: 0 !important;
+    color: black;
+}
+
+.form-control:focus{
+    background-color: rgb(28, 28, 28);
+    color: white;
+}
