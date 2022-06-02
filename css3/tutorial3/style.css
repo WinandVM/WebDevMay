@@ -84,8 +84,24 @@ article>p{
 }
 
 .box{
-    background:whitesmoke;
-    height: 100px;
+    background: url(download.png);
+    background-size: cover;
+    height: 300px;
     color:black;
+    animation: myAnimation ease-in-out 0.5s infinite;
+}
 
+@keyframes myAnimation {
+    
+    0%{
+        transform: rotate(0deg);
+    }
+
+    50%{
+        transform: rotate(10deg);
+    }
+
+    100%{
+        transform: rotate(0deg);
+    }
 }
