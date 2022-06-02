@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -83,15 +84,15 @@
             </div>
         </div> -->
 
-        <p class="lead bg-dark text-light p-2">Carousel component</p>
+        <p class="lead bg-dark text-light p-2 opacity-50">Carousel component</p>
 
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-              <!-- start of slider  -->
+              
               <div class="carousel-item active">
                 <img src="https://www.itl.cat/pngfile/big/30-309855_gerelateerde-afbeelding-retrowave-background.jpg" class="d-block w-100" alt="...">
               </div>
-              <!-- end of slider -->
+              
               <div class="carousel-item">
                 <img src="https://www.itl.cat/pngfile/big/110-1103047_retrowave-japanese-style-wallpaper-by-halukaliev-asian-retrowave.jpg" class="d-block w-100" alt="...">
               </div>
@@ -110,7 +111,55 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
+          </div> -->
+          <p class="lead bg-dark text-light p-2">Modal component</p>
+
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#intec">
+            INTEC
+          </button>
+
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#webdev">
+            WEBDEV
+          </button>
+
+          <div class="modal fade" id="webdev" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+              <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                  <h5 class="modal-title" id="exampleModalLabel">WEBDEV</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-2 webdev-body">
+                  <h1 class="display-1 text-center text-light">Hello world!</h1>
+                  <div class="modal-footer bottom-0 position-fixed w-100  webdev-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
           </div>
+
+
+          <div class="modal fade" id="intec" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">INTEC</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <i class="bi bi-pc-display-horizontal"></i>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"

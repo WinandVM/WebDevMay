@@ -3,3 +3,11 @@
     object-fit: cover;
     object-position: center;
 }
+
+.webdev-body{
+    background: url(https://c.tenor.com/YgIGqmSQavQAAAAC/cyberpunk2077-video-games.gif);
+    background-size: cover;
+}
+.webdev-footer{
+    background-color: transparent !important
+}
