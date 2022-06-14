@@ -24,3 +24,10 @@ var _students = [
         score:70
     }
 ]
+
+// whoPassedExam?
+function whoPassedExam(param){
+    // code here
+}
+
+console.log(whoPassedExam(_students))
