@@ -247,14 +247,103 @@ users.push({
 })
 // filter users data
 const FilteredUsers = users.filter(function(user){
-    console.log(user)
+  //  console.log(user)
     return user.id == 5
 })
 
 FilteredUsers.forEach(function(user){
     user.address.city= "Madagascar"
     
-    console.log(`#################\nfullname: ${user.name}\nusername: ${user.username}\nemail: ${user.email}\ncity: ${user.address.city}\ngeoLocation: ${user.address.geo.lat}, ${user.address.geo.lng}\n#################`)
+    // console.log(`#################\nfullname: ${user.name}\nusername: ${user.username}\nemail: ${user.email}\ncity: ${user.address.city}\ngeoLocation: ${user.address.geo.lat}, ${user.address.geo.lng}\n#################`)
 
 })
 
+
+
+var myCvInformation = [
+    {
+        fullname:"Joe Dalton",
+        username:"joe",
+        email:"joe@microsoft.com",
+        phone:"911",
+        profession:"Software developer",
+        address:{
+            city:"Brussel",
+            street:"Stalingrad"
+        },
+        skills:['python','javascript','photoshop','nodejs','reactjs','html','css'],
+        education:[
+            {
+                school:'Azbakan school',
+                year:'2010',
+                degree:'High school',
+            },
+            {
+                school:"Programming school",
+                year:"2015",
+            }
+        ],
+        experience:[
+            {
+                company:'No Name company',
+                role:"Software developer",
+                year:"2015",
+            }
+            ,
+            {
+                company:'The white rabbit',
+                role:"Software developer",
+                year:"2020",
+            }
+        ]
+    }
+]
+
+
+// myCvInformation.forEach(function(coffee){
+//     console.log(coffee)
+//     console.log(`Fullname: ${coffee.fullname}\n`)
+//     // coffee.skills.forEach(skill=>console.log(skill))
+//     console.log(coffee.skills.join("\n"))
+//     console.log(coffee.skills.toString())
+// })
+
+
+// function FilterData(myarr){
+//     // filter here
+//     return myarr += " INTEC"
+// }
+
+// function ChangeLetterToUpperCase(filteredData){
+//     // changing username letters to upper case
+//     return filteredData.toUpperCase()
+// }
+
+// function PrinterService(getFilteredData){
+//     const getResult = FilterData(ChangeLetterToUpperCase(getFilteredData))
+//     console.log(getResult)
+// }
+
+function FilterData(myarr){
+    // filter here
+    return myarr
+}
+
+function ChangeLetterToUpperCase(filteredData){
+    // changing username letters to upper case
+    // iteration
+   // console.log(filteredData)
+   let temp = []
+   filteredData.forEach(function(user){
+        user.name = user.name.toUpperCase()
+        temp.push(user)
+   })
+   return temp
+}
+
+function PrinterService(getFilteredData){
+    const getResult = FilterData(ChangeLetterToUpperCase(getFilteredData))
+   console.log(getResult,"test")
+}
+
+PrinterService(users)
