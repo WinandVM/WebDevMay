@@ -346,4 +346,39 @@ function PrinterService(getFilteredData){
    console.log(getResult,"test")
 }
 
-PrinterService(users)
+//PrinterService(users)
+
+var numbers = [55,4,22,1,0,3,5,6,7,8,9,10]
+
+let result = numbers.reduce(function(accumulator,currentValue){
+    
+    // console.log("Accumulator:", accumulator)
+   
+    // console.log("CurrentValue:", currentValue)
+    return accumulator + currentValue
+})
+
+result = numbers.reduceRight(function(accumulator,currentValue){
+    console.log("Accumulator:", accumulator)
+    console.log("CurrentValue:", currentValue)
+    return accumulator + currentValue
+})
+
+var students ={
+    name:'joe',
+    scores:[55,777,88,99,455,66,44]
+}
+
+var nestedArray = [1,2,3,[4,5,6,[7,8,9,10,['a','b','c']]]]
+
+// fill
+result = numbers.fill(5)
+
+// flat method
+result = nestedArray.flat(3)
+
+
+var n1=[4,4,5,6]
+var n2=[7,88,5,3]
+result = [...n1,...n2]
+console.log(result)
