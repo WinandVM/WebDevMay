@@ -10,32 +10,32 @@
 // }
 
 // class based
-class App{
-    constructor(username){
+class App {
+    constructor(username) {
         this.username = username;
-        this.users=[];
-        this.test = function(){
+        this.users = [];
+        this.test = function () {
             return "Function in Constructor"
         }
     }
 
-    static getCity(){
+    static getCity() {
         return "Brussels"
     }
 
-    getUsername(){
+    getUsername() {
         return this.username
     }
 
-    getUsers(){
+    getUsers() {
         return this.users
     }
 
-    addUser(){
+    addUser() {
         return this.users.push(this.username)
     }
 
-    toString(){
+    toString() {
         return this.getUsername() + " " + App.getCity()
     }
 

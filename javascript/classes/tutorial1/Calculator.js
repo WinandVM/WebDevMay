@@ -34,17 +34,17 @@
 // app.divide(); // division result
 // app.toString()
 
-class Calc{
-    constructor(number1,number2,operator){
-        this.result=0; // result of the math operation
+class Calc {
+    constructor(number1, number2, operator) {
+        this.result = 0; // result of the math operation
         this.number1 = number1;
         this.number2 = number2;
         this.operator = operator;
     }
 
-    GetResult(operator){
+    GetResult(operator) {
         this.operator = operator;
-        switch(operator){
+        switch (operator) {
             case '+':
                 this.result = this.number1 + this.number2;
                 break;
@@ -62,7 +62,7 @@ class Calc{
         }
     }
 
-    toString(){
+    toString() {
         console.log(`${this.number1} ${this.operator} ${this.number2} = ${this.result}`)
         // 10 + 5 = 15
     }
@@ -80,7 +80,7 @@ class Calc{
 // app3.GetResult()    
 // app3.toString();
 
-let app = new Calc(10,5);
+let app = new Calc(10, 5);
 app.GetResult('+')
 app.GetResult('-')
 app.GetResult('*')
