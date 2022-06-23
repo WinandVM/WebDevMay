@@ -8,6 +8,7 @@ class Drone{
     }
 }
 
+// child class
 class CivilDrone extends Drone{
     constructor(type='civil drone',speed=50,battery=100){
         super(type,speed,battery);
@@ -31,6 +32,7 @@ class CivilDrone extends Drone{
 
 }
 
+// child class
 class MilitaryDrone extends Drone{
     constructor(type='military drone',speed=150,battery=100){
         super(type,speed,battery);
