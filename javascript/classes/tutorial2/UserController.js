@@ -1,55 +1,36 @@
 class User {
-    constructor(username, password) {
-        this.username = username;
-        this.password = password;
-        this.users = []
-    }
-
-    getusers(){
-        return this.users
+    constructor(role='user') {
+        this.role=role;
     }
 }
 
-
-class Guest extends User {
-    constructor(username, password, permission) {
-        super(username, password)
-        this.permission = permission;
+class Controller extends User {
+    constructor(role) {
+        super(role);
+        this.users = [];
     }
 
-    register() {
+    getUsers(){
+        return this.users;
+    }
+
+    register(username,password) {
         this.users.push({
-            username: this.username,
-            password: this.password,
-            permission: this.permission
+            username,
+            password,
+            role:this.role
         })
     }
 }
 
-class Admin extends User {
-    constructor(username, password, permission) {
-        super(username, password)
-        this.permission = permission;
-    }
 
-    register() {
-        this.users.push({
-            username: this.username,
-            password: this.password,
-            permission: this.permission
-        })
-    }
+let admin = new Controller('Administrator');
+admin.register('mehmet','mehmet12345');
+admin.register('ali','ali12345');
+// console.log(admin.getUsers())
+
+admin.getUsers().forEach(user=>{
+    console.log(user)
+})
 
 
-
-}
-
-
-
-let app = new Admin("admin", "admin1234", "Administrator");
-app.register()
-
-let app2 = new Guest("guest", "guest1234", "Guest");
-app2.register()
-console.log(app2.getusers())
-console.log(app.getusers())
