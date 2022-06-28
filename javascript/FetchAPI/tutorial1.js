@@ -79,4 +79,19 @@ getUsers
         <td>${user.password}</td>
     </tr>` 
     })
+  //  let result = data.map(({username})=>({username}))
+   // console.log(result)
+
 })
+
+// https://jsonplaceholder.typicode.com/users
+
+const users = [
+
+]
+
+// step1 get all original data
+// step2 extract specific properties from user 
+// {id:1,username:atilla,password:123}
+// step3 users.push({})
+// step4 users
