@@ -37,9 +37,10 @@ GetData()
 })
 
 
-// const TestData = ['a','b','c','d','e']
-// const [x,y,z,d,e,f,g] = TestData
-// console.log(x,y,z,g) 
+// destructuring array
+const TestData = ['a','b','c','d','e']
+const [x,y,z,d,e,f,g] = TestData
+console.log(x,y,z,g) 
 
 const obj={
     id:1,
@@ -50,3 +51,21 @@ const obj={
 const {id,name,username} = obj
 console.log(username)
 
+fetch('dontreadme.txt')
+.then(res=>res.text())
+.then(data=>{
+    console.log(data)
+})
+
+const number1= document.getElementById('number1')
+const number2= document.getElementById('number2')
+const SumBtn = document.getElementById('btn')
+
+// do not use eval()
+SumBtn.addEventListener('click',(e)=>{
+    e.preventDefault()
+    const num1 = Number(number1.value)
+    const num2 = number2.value
+    let result = eval(num1+num2)
+    console.log(result)
+})
