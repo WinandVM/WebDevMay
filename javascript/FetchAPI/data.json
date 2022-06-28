@@ -1,0 +1,28 @@
+{
+  "api": [
+    {
+      "username": "root",
+      "password": "root123",
+      "id": 1
+    },
+    {
+      "username": "atilla",
+      "password": "atilla123",
+      "id": 2
+    }
+  ],
+  "products": [
+    {
+      "productType": "computer",
+      "productName": "Asus Gaming Computer",
+      "price": "199$",
+      "id": 2
+    },
+    {
+      "productType": "computer",
+      "productName": "HP gaming computer",
+      "price": "599$",
+      "id": 3
+    }
+  ]
+}

@@ -80,14 +80,16 @@ function PrintService(response){
 getUsers(users)
 .then(data=>GetUserById(data,2))
 .then(data=>GetObjectAndUpdatePropertyValue(data[0],'username','Joe Dalton'))
-.then(PrintService)
+.then(function(x){
+    console.log(x)
+})
 
 
-const user = [{
-    name:'x',
-    username:'y'
-}
-]
-user[0]['name'] = 'Joe'
-console.log(user)
-console.log(users)
+// const user = [{
+//     name:'x',
+//     username:'y'
+// }
+// ]
+// user[0]['name'] = 'Joe'
+// console.log(user)
+// console.log(users)
