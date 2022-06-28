@@ -55,7 +55,7 @@ switch(date.getDay()){
 
 }
 
-const winner = "Atilla";
+const winner = "john";
 
 switch(winner){
     case "Dave":

@@ -44,7 +44,7 @@ console.log(x,y,z,g)
 
 const obj={
     id:1,
-    name:'atilla',
+    name:'john',
     username:'root',
 }
 

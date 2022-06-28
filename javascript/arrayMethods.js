@@ -33,7 +33,7 @@ result = myNumbers.concat(myLetters) // combines two arrays
 //     console.log(result[i])
 // }
 
-let emptyArray = [4, 6, 'atilla', 'intec', 'koc']
+let emptyArray = [4, 6, 'john', 'intec', 'koc']
 function NewForLoop(value, index, arrayitself) {
     console.log(value, index, arrayitself)
 }

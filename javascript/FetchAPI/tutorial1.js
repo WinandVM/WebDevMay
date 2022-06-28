@@ -38,7 +38,7 @@
 // .then(data=>data)
 // .then(data=>{
 //     data.map(user=>{
-//         user.username = user.username.toUpperCase() // 'atilla' = 'atilla'.toUpperCase()
+//         user.username = user.username.toUpperCase() // 'john' = 'john'.toUpperCase()
 //     })
 //     return data
 // })
@@ -92,6 +92,6 @@ const users = [
 
 // step1 get all original data
 // step2 extract specific properties from user 
-// {id:1,username:atilla,password:123}
+// {id:1,username:john,password:123}
 // step3 users.push({})
 // step4 users
