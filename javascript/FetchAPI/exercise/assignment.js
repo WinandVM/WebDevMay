@@ -47,3 +47,32 @@ Richie_Pouros:PPQ997UwOshJDc5
 Alexandria21:iTMU5kWTFriM_i4
 Cesar67:lvKUIHenNexA3mS
 Ryder.Gibson:HZ47I0WeHZhVwW4`
+
+var result;
+const CreateBtn = document.getElementById('create')
+// split line by line
+result = UserAccounts.split("\n")
+
+CreateBtn.addEventListener('click',(e)=>{
+    e.preventDefault()
+    result.forEach(user=>{
+ //   console.log(user)
+    let userInfo = user.split(":")
+  //  console.log(userInfo)
+    let obj = {
+        username: userInfo[0],
+        password: userInfo[1]
+    }
+    fetch('http://localhost:5000/api',{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(obj)
+    })
+    .then(res=>res.json())
+    .then(data=>console.log("user is created!"))
+    console.log(obj)
+})
+
+})
