@@ -68,3 +68,8 @@ getBtn.addEventListener('click', () => {
 // })
 
 window.resizeTo(500,500)
+
+
+var options = ['a','b','c','d']
+console.log(options[options.length-1])
+
