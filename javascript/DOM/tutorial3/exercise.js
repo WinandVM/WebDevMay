@@ -64,63 +64,110 @@ const g = t => document.createElement(t);
 </table>
 */
 
-const table = g('table')
-table.className="table"
+// const table = g('table')
+// table.className = "table"
 
-const thead = g('thead')
-const trOfThead = g('tr')
+// const thead = g('thead')
+// const trOfThead = g('tr')
 
 
-const thIndex = g('th')
-thIndex.innerText="#"
-thIndex.setAttribute('scope','col')
+// const thIndex = g('th')
+// thIndex.innerText = "#"
+// thIndex.setAttribute('scope', 'col')
 
-// trOfThead.append(thIndex) // appened th into tr
+// // trOfThead.append(thIndex) // appened th into tr
 
-const thFirst = g('th')
-thFirst.innerText="First"
-thFirst.setAttribute('scope','col')
+// const thFirst = g('th')
+// thFirst.innerText = "First"
+// thFirst.setAttribute('scope', 'col')
 
-const thLast = g('th')
-thLast.setAttribute('scope','col')
+// const thLast = g('th')
+// thLast.setAttribute('scope', 'col')
 
-const thHandle = g('th')
-thHandle.setAttribute('scope','col')
+// const thHandle = g('th')
+// thHandle.setAttribute('scope', 'col')
 
-trOfThead.append(thIndex,thFirst,thLast,thHandle)
-thead.append(trOfThead)
-table.append(thead)
+// trOfThead.append(thIndex, thFirst, thLast, thHandle)
+// thead.append(trOfThead)
+// table.append(thead)
 
-const tbody = g('tbody') // tbody 
+// const tbody = g('tbody') // tbody 
 
-const trOfTbody = g('tr') // tr of tbody
+// const trOfTbody = g('tr') // tr of tbody
 
-const thOfTbody = g('th') // child of tr of tbody
-thOfTbody.scope = 'row'
-thOfTbody.innerText='1'
+// const thOfTbody = g('th') // child of tr of tbody
+// thOfTbody.scope = 'row'
+// thOfTbody.innerText = '1'
 
-const tdFirst  = g('td') // child of tr of tbody
-tdFirst.innerText="joe"
+// const tdFirst = g('td') // child of tr of tbody
+// tdFirst.innerText = "joe"
 
-const tdLast = g('td') // child of tr of tbody
-tdLast.innerText="dalton"
+// const tdLast = g('td') // child of tr of tbody
+// tdLast.innerText = "dalton"
 
-const tdHandle = g('td') // child of tr of tbody
-tdHandle.innerText="@joe"
-trOfTbody.append(thOfTbody,tdFirst,tdLast,tdHandle)
-tbody.append(trOfTbody)
-table.append(tbody)
-document.body.append(table)
+// const tdHandle = g('td') // child of tr of tbody
+// tdHandle.innerText = "@joe"
+// trOfTbody.append(thOfTbody, tdFirst, tdLast, tdHandle)
+// tbody.append(trOfTbody)
+// table.append(tbody)
+// document.body.append(table)
 
 /*
-
 <div class="card" style="width: 18rem;">
-        <img src="https://picsum.photos/200" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+<img src="https://picsum.photos/200" class="card-img-top" alt="...">
+ <div class="card-body">
+      <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-      </div>
 
-      */
+</div> 
+    */
+
+// Card Container
+const CardContainer = g('div')
+CardContainer.setAttribute('style','width: 18rem;')
+
+// Card Image
+const CardImage = g('img')
+CardImage.setAttribute('src','https://picsum.photos/200')
+//CardImage.classList.add('card-img-top')
+CardImage.className="card-img-top"
+CardImage.setAttribute('alt','Random')
+
+
+
+const CardBody = g('div')
+CardBody.classList.add('card-body')
+
+const h5=g('h5')
+h5.classList.add('card-title')
+const CardTitleText = document.createTextNode('Card title')
+h5.append(CardTitleText)
+
+const desc = g('p')
+desc.classList.add('card-text')
+const CardText = document.createTextNode('Some quick example text to build on the card title and make up the bulk of the card\'s content.')
+desc.append(CardText)
+
+const CardBtn = g('a')
+CardBtn.classList.add('btn')
+CardBtn.classList.add('btn-primary')
+CardBtn.innerText="Card Button"
+CardBody.append(h5)
+CardBody.append(desc)
+CardBody.append(CardBtn)
+CardContainer.append(CardImage)
+CardContainer.append(CardBody)
+
+const cloneOfCardContainer = CardContainer.cloneNode(true)
+cloneOfCardContainer.children[1].children[0].innerText="New Card Title"
+
+
+// change button style of clone one
+cloneOfCardContainer.children[1].lastChild.classList.remove('btn-primary')
+cloneOfCardContainer.children[1].lastChild.classList.add('btn-danger')
+document.body.append(CardContainer)
+document.body.append(cloneOfCardContainer)
+
+
