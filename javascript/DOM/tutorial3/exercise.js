@@ -124,50 +124,89 @@ const g = t => document.createElement(t);
 </div> 
     */
 
-// Card Container
-const CardContainer = g('div')
-CardContainer.setAttribute('style','width: 18rem;')
+// // Card Container
+// const CardContainer = g('div')
+// CardContainer.setAttribute('style','width: 18rem;')
 
-// Card Image
-const CardImage = g('img')
-CardImage.setAttribute('src','https://picsum.photos/200')
-//CardImage.classList.add('card-img-top')
-CardImage.className="card-img-top"
-CardImage.setAttribute('alt','Random')
-
-
-
-const CardBody = g('div')
-CardBody.classList.add('card-body')
-
-const h5=g('h5')
-h5.classList.add('card-title')
-const CardTitleText = document.createTextNode('Card title')
-h5.append(CardTitleText)
-
-const desc = g('p')
-desc.classList.add('card-text')
-const CardText = document.createTextNode('Some quick example text to build on the card title and make up the bulk of the card\'s content.')
-desc.append(CardText)
-
-const CardBtn = g('a')
-CardBtn.classList.add('btn')
-CardBtn.classList.add('btn-primary')
-CardBtn.innerText="Card Button"
-CardBody.append(h5)
-CardBody.append(desc)
-CardBody.append(CardBtn)
-CardContainer.append(CardImage)
-CardContainer.append(CardBody)
-
-const cloneOfCardContainer = CardContainer.cloneNode(true)
-cloneOfCardContainer.children[1].children[0].innerText="New Card Title"
+// // Card Image
+// const CardImage = g('img')
+// CardImage.setAttribute('src','https://picsum.photos/200')
+// //CardImage.classList.add('card-img-top')
+// CardImage.className="card-img-top"
+// CardImage.setAttribute('alt','Random')
 
 
-// change button style of clone one
-cloneOfCardContainer.children[1].lastChild.classList.remove('btn-primary')
-cloneOfCardContainer.children[1].lastChild.classList.add('btn-danger')
-document.body.append(CardContainer)
-document.body.append(cloneOfCardContainer)
+
+// const CardBody = g('div')
+// CardBody.classList.add('card-body')
+
+// const h5=g('h5')
+// h5.classList.add('card-title')
+// const CardTitleText = document.createTextNode('Card title')
+// h5.append(CardTitleText)
+
+// const desc = g('p')
+// desc.classList.add('card-text')
+// const CardText = document.createTextNode('Some quick example text to build on the card title and make up the bulk of the card\'s content.')
+// desc.append(CardText)
+
+// const CardBtn = g('a')
+// CardBtn.classList.add('btn')
+// CardBtn.classList.add('btn-primary')
+// CardBtn.innerText="Card Button"
+// CardBody.append(h5)
+// CardBody.append(desc)
+// CardBody.append(CardBtn)
+// CardContainer.append(CardImage)
+// CardContainer.append(CardBody)
+
+// const cloneOfCardContainer = CardContainer.cloneNode(true)
+// cloneOfCardContainer.children[1].children[0].innerText="New Card Title"
 
 
+// // change button style of clone one
+// cloneOfCardContainer.children[1].lastChild.classList.remove('btn-primary')
+// cloneOfCardContainer.children[1].lastChild.classList.add('btn-danger')
+// document.body.append(CardContainer)
+// document.body.append(cloneOfCardContainer)
+
+
+function MakeCardComponent(image, cardTitle, description, btnColor, btnText) {
+    // Card Container
+    const CardContainer = g('div')
+    CardContainer.setAttribute('style', 'width: 18rem;')
+
+    // Card Image
+    const CardImage = g('img')
+    CardImage.setAttribute('src', `${image}`)
+    //CardImage.classList.add('card-img-top')
+    CardImage.className = "card-img-top"
+    CardImage.setAttribute('alt', 'Random')
+
+
+
+    const CardBody = g('div')
+    CardBody.classList.add('card-body')
+
+    const h5 = g('h5')
+    h5.classList.add('card-title')
+    const CardTitleText = document.createTextNode(cardTitle)
+    h5.append(CardTitleText)
+
+    const desc = g('p')
+    desc.classList.add('card-text')
+    const CardText = document.createTextNode(description)
+    desc.append(CardText)
+
+    const CardBtn = g('a')
+    CardBtn.classList.add('btn')
+    CardBtn.classList.add(btnColor != undefined ? btnColor : 'btn-primary')
+    CardBtn.innerText = "Card Button"
+    CardBody.append(h5)
+    CardBody.append(desc)
+    CardBody.append(CardBtn)
+    CardContainer.append(CardImage)
+    CardContainer.append(CardBody)
+
+    return CardContainer
+}
