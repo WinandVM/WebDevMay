@@ -70,9 +70,12 @@ table.className="table"
 const thead = g('thead')
 const trOfThead = g('tr')
 
+
 const thIndex = g('th')
 thIndex.innerText="#"
 thIndex.setAttribute('scope','col')
+
+// trOfThead.append(thIndex) // appened th into tr
 
 const thFirst = g('th')
 thFirst.innerText="First"
@@ -84,4 +87,7 @@ thLast.setAttribute('scope','col')
 const thHandle = g('th')
 thHandle.setAttribute('scope','col')
 
+trOfThead.append(thIndex,thFirst,thLast,thHandle)
+thead.append(trOfThead)
+table.append(thead)
 console.log(table, thead)
