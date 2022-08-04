@@ -201,12 +201,21 @@ function MakeCardComponent(image, cardTitle, description, btnColor, btnText) {
     const CardBtn = g('a')
     CardBtn.classList.add('btn')
     CardBtn.classList.add(btnColor != undefined ? btnColor : 'btn-primary')
-    CardBtn.innerText = "Card Button"
+    CardBtn.innerText = btnText
     CardBody.append(h5)
     CardBody.append(desc)
     CardBody.append(CardBtn)
     CardContainer.append(CardImage)
     CardContainer.append(CardBody)
-
-    return CardContainer
+    console.log(btnColor)
+    return document.body.append(CardContainer)
 }
+
+
+MakeCardComponent('https://evolutionsports.nl/wp-content/uploads/2020/10/Martial-Art-stijlen-die-als-inspiraatsie-diende-voor-Avatar-The-Last-Airbender.jpeg','This is a test','lorem ipsum lorem ipsum','btn-success','Click me')
+
+MakeCardComponent('https://evolutionsports.nl/wp-content/uploads/2020/10/Martial-Art-stijlen-die-als-inspiraatsie-diende-voor-Avatar-The-Last-Airbender.jpeg','Tasdasdasdasd','lorem ipsum lorem ipsum')
+
+document.querySelector('.RemoveBtn').addEventListener('click',()=>{
+    document.body.removeChild(document.body.children[2])
+})
