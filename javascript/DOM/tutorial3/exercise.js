@@ -211,7 +211,7 @@ function MakeCardComponent(image, cardTitle, description, btnColor, btnText) {
     return document.body.append(CardContainer)
 }
 
-
+// https://nl.wikipedia.org/w/api.php
 MakeCardComponent('https://evolutionsports.nl/wp-content/uploads/2020/10/Martial-Art-stijlen-die-als-inspiraatsie-diende-voor-Avatar-The-Last-Airbender.jpeg','This is a test','lorem ipsum lorem ipsum','btn-success','Click me')
 
 MakeCardComponent('https://evolutionsports.nl/wp-content/uploads/2020/10/Martial-Art-stijlen-die-als-inspiraatsie-diende-voor-Avatar-The-Last-Airbender.jpeg','Tasdasdasdasd','lorem ipsum lorem ipsum')
