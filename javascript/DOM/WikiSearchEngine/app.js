@@ -20,25 +20,25 @@ async function searchData(keyword, limit) {
                     
 */
 
-// const g = t => document.createElement(t) // create element
-// function HtmlTemplateGenerator(obj) {
-//     const li = g('li')
-//     li.className = "list-group-item d-flex justify-content-between align-items-start"
+const g = t => document.createElement(t) // create element
+function HtmlTemplateGenerator(obj) {
+    const li = g('li')
+    li.className = "list-group-item d-flex justify-content-between align-items-start"
 
-//     const parentDiv = g('div')
-//     parentDiv.className = "ms-2 me-auto"
-//     const textOfParentDiv = document.createTextNode(obj.snippet)
+    const parentDiv = g('div')
+    parentDiv.className = "ms-2 me-auto"
+    const textOfParentDiv = document.createTextNode(obj.snippet)
 
 
-//     const childDiv = g('div')
-//     childDiv.className = "fw-bold"
-//     const textOfChildDiv = document.createTextNode(obj.title)
-//     childDiv.append(textOfChildDiv)
-//     parentDiv.append(childDiv)
-//     parentDiv.append(textOfParentDiv)
-//     li.append(parentDiv)
-//     return ResultsSection.append(li)
-// }
+    const childDiv = g('div')
+    childDiv.className = "fw-bold"
+    const textOfChildDiv = document.createTextNode(obj.title)
+    childDiv.append(textOfChildDiv)
+    parentDiv.append(childDiv)
+    parentDiv.append(textOfParentDiv)
+    li.append(parentDiv)
+    return ResultsSection.append(li)
+}
 
 
 // wikiSearch.addEventListener('click', (e) => {
@@ -126,4 +126,15 @@ searchInput.addEventListener('blur', (e) => {
         e.target.classList.add('text-dark')
     }
 
+})
+
+// DOMContentLoaded event
+document.addEventListener('DOMContentLoaded',()=>{
+    searchData('javascript',20)
+    .then(data=>{
+        console.log(data,'DOMContentLoaded event')
+        data.query.search.forEach(obj=>{
+            HtmlTemplateGenerator(obj)
+        })
+    })
 })
