@@ -6,11 +6,38 @@ document.addEventListener('DOMContentLoaded',()=>{
     .then(radios=>{
    
         radios.map((radio,index)=>{
-            console.log(radio)
-            radioList.innerHTML+=`<li class="list-group-item bg-black text-light">
-            <img src="${radio.logo}" class="w-25 mx-2"   />
+           // console.log(radio)
+            radioList.innerHTML+=`<li class="list-group-item bg-black radio text-light" radio-id="${radio.id}">
+            <img src="${radio.logo}" class="w-25 mx-2"  />
             ${radio.name}
             </li>`
         })
     })
+})
+
+function PlayAudio(obj){
+    console.log(obj)
+    document.querySelector('audio').src = obj.url
+    document.querySelector('audio').play()
+}
+
+async function getRadioById(id){
+    let res = await fetch (`http://localhost:5000/radios/${id}`)
+    let radio = await res.json()
+    return radio
+}
+
+
+radioList.addEventListener('click',(e)=>{
+   
+    if(e.target.classList.contains('radio')){
+     //   console.log('radioooooo',e.target)
+        const RadioID = e.target.getAttribute('radio-id')
+      //  console.log(RadioID)
+        getRadioById(RadioID)
+        .then(radio=>{
+            PlayAudio(radio)
+        })
+    }
+    e.preventDefault()
 })
