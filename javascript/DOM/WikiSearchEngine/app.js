@@ -41,42 +41,42 @@ function HtmlTemplateGenerator(obj) {
 }
 
 
-// wikiSearch.addEventListener('click', (e) => {
-//     ResultsSection.innerHTML='' // clear the results section
-//     // fetching data here
-//     searchData(searchInput.value, 30)
-//         .then(data => {
-//             console.log(data.query.search) // retrieved data
-//             data.query.search.forEach(obj=>{
-//                 HtmlTemplateGenerator(obj)
-//             })
-//         }).catch(err=>{
-//             alert('No data found')
-//         })
-//     console.log('hello world', searchInput.value)
-//     e.preventDefault()
-// })
+wikiSearch.addEventListener('click', (e) => {
+    ResultsSection.innerHTML='' // clear the results section
+    // fetching data here
+    searchData(searchInput.value, 30)
+        .then(data => {
+            console.log(data.query.search) // retrieved data
+            data.query.search.forEach(obj=>{
+                HtmlTemplateGenerator(obj)
+            })
+        }).catch(err=>{
+            alert('No data found')
+        })
+    console.log('hello world', searchInput.value)
+    e.preventDefault()
+})
 
 // html events
 // mouse events
 
 
-// mouseover
-ResultsSection.addEventListener('mouseover', (e) => {
-    console.log('Mouse Over Event', e.target)
-    if (e.target.classList.contains('bg-dark')) {
-        e.target.classList.remove('bg-dark')
-        e.target.classList.add('bg-danger')
-    }
+// // mouseover
+// ResultsSection.addEventListener('mouseover', (e) => {
+//     console.log('Mouse Over Event', e.target)
+//     if (e.target.classList.contains('bg-dark')) {
+//         e.target.classList.remove('bg-dark')
+//         e.target.classList.add('bg-danger')
+//     }
 
-})
+// })
 
-// mouseout
-ResultsSection.addEventListener('mouseout', (e) => {
-    console.log('Mouse Out Event', e.target)
-    e.target.classList.add('bg-dark')
-    e.target.classList.add('text-light')
-})
+// // mouseout
+// ResultsSection.addEventListener('mouseout', (e) => {
+//     console.log('Mouse Out Event', e.target)
+//     e.target.classList.add('bg-dark')
+//     e.target.classList.add('text-light')
+// })
 
 // mousedown
 ResultsSection.addEventListener('mousedown', (e) => {
