@@ -16,7 +16,7 @@ Spread Operator
 function App() {
   return (
    <div>
-     <ChildComponent/>
+     <ChildComponent name="Coffee"/>
     <h1>Hello world</h1>
    </div>
   );

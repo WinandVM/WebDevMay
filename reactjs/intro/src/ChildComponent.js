@@ -1,7 +1,8 @@
+import ChildOfChild from "./ChildOfChild";
 import ABC from "./components/SocialIcons";
 //import Users from './components/Users'
 import {company,doMath,students} from './components/Users'
-export default function ChildComponent(){
+export default function ChildComponent({name}){
     // define a variable
     const companyName= "Google";
     const getSumResult = 4+7;
@@ -46,11 +47,17 @@ export default function ChildComponent(){
            {/* {console.log(Users)} */}
            {
             // iterate through the array
-           students.map(user=>{
-            return <h1>{user}</h1>
-           }) 
+           students.map(user=>user ==='Joe'? <h1>Hello Joe, Welcome to page</h1>:<h1>Hello visitor, Welcome to page</h1>) 
            }
            <h1 style={myComponentStyle}>{company}</h1>
+            {
+                true? <h1>This is true result</h1>: <h1>This is false result</h1>
+            }
+            {
+                [...[1,2,3,4]]
+            }
+            {/* {name} */}
+            <ChildOfChild name={name}/>
         </div>
     )
 }
