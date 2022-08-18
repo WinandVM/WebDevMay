@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
-
+import {v4 as uuidv4} from 'uuid' // npm install uuid
 export default function TodoList() {
     const [todo, setTodo] = useState('') // store single todo
-    const [todos, setTodos] = useState(['javascript','java'])
+    const [todos, setTodos] = useState(['javascript', 'java'])
 
     const handleInput = (e) => {
         // handle input value attribute
@@ -34,6 +34,14 @@ export default function TodoList() {
                     <Button onClick={handleClick}>Add</Button>
                     {console.log(todos)}
                 </InputGroup>
+                <hr />
+                <ul>
+                    {
+                      todos.map(todo=>(
+                        <li key={uuidv4()}>{todo}</li>
+                      ))
+                    }
+                </ul>
             </Col>
         </Row>
     )
