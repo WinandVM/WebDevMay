@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Badge, Button, Col, Container, Row } from 'react-bootstrap'
+import {v4 as uuidv4} from 'uuid'
+import TodoList from './TodoList'
 function App() {
     //  push to state array
 
@@ -35,7 +37,8 @@ function App() {
 
   return (
     <Container className="bg-dark text-light p-4" fluid={true}>
-        <Row className="justify-content-center">
+    <TodoList/>
+        {/* <Row className="justify-content-center">
             <Col md={3}>
                 <h1>Fetch data</h1>
                 <Button onClick={fetchingData}>Get Users Data</Button>
@@ -49,13 +52,13 @@ function App() {
             {console.log(users)}
             {
                 users.map((user,index)=>(
-                    <div key={create_UUID()} onClick={()=>getDetailOfUser(user)}>
-                    {console.log(create_UUID())}
+                    <div key={uuidv4()} onClick={()=>getDetailOfUser(user)}>
+                    {console.log(uuidv4())}
                         <p>{user.name}</p>
                     </div>
                 ))
             }
-        </Row>
+        </Row> */}
     </Container>
   )
 }
