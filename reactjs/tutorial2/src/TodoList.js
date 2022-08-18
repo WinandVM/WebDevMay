@@ -13,7 +13,12 @@ export default function TodoList() {
 
     const handleClick = (e) => {
         console.log('click click testing => ', todo)
-        setTodos([...todos,todo]) 
+        // solution 2
+        let temp = todos;
+        temp.push(todo)
+        setTodos(temp)
+        // solution 1
+        // setTodos([...todos,todo]) 
     }
     return (
         <Row className="justify-content-center">
