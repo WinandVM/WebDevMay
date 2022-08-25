@@ -19,9 +19,9 @@ function Header() {
                             <Link to={'/movies/comedy'} className="dropdown-item text-decoration-none">Comedy</Link>
                         </NavDropdown>
                     </Nav>
-                    <Nav>
+                    <Nav className="d-flex flex-row">
                         <Link to={'/#social'}><FaTwitter fill='white' className="display-6 bg-primary p-1 rounded-1 mx-1"/></Link>
-                        <Link to={'/#social'}><FaLinkedin fill='white' className="display-6 bg-primary p-1 rounded-1"/></Link>
+                        <Link to={'/#social'}><FaLinkedin fill='white' className="display-6 bg-primary p-1 rounded-1 me-1"/></Link>
                         <Link to={'/#social'}><FaInstagram fill='white' className="display-6 bg-instagram p-1 rounded-1"/></Link>
                     </Nav>
                 </Navbar.Collapse>

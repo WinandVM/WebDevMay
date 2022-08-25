@@ -1,8 +1,12 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
+import CarouselComponent from './components/Homepage/CarouselComponent'
 
 function Home() {
   return (
-    <div>Home</div>
+    <Container fluid={true} className="p-0">
+      <CarouselComponent />
+    </Container>
   )
 }
 
