@@ -17,12 +17,14 @@ function Home() {
   },[])
   
   return (
-    <Container fluid={true} className="">
+    <>
+    <Container fluid={true} className="p-0">
       <CarouselComponent />
       {
         console.log(movies)
       }
-      <ul className="movies">
+    </Container>
+    <ul className="movies p-4 bg-dark">
         {
           movies !=undefined?
           movies.map((movie,index)=>(
@@ -32,7 +34,7 @@ function Home() {
           ''
         }
       </ul>
-    </Container>
+    </>
   )
 }
 
