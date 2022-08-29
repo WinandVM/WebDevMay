@@ -20,32 +20,34 @@ function MovieDetail() {
             <div className="p-5 bg-primary text-white movie-img rounded-0" style={{ 'background': `url(https://image.tmdb.org/t/p/w500${movieDetail.poster_path})` }}>
                 <h1 className='text-center movie-title'>{movieDetail.original_title}</h1>
             </div>
-            <Row className="p-0 m-0">
+            <Row className="p-0 m-0 ">
                 <Col md={3} className="p-3">
                     <ListGroup>
-                        <ListGroup.Item className="bg-none text-light border-0">
-                            <Badge bg="warning" text="dark">ImDB Score: <p className='bg-white rounded d-inline'>
+                        <ListGroup.Item className="bg-none text-light border-0 py-1 ">
+                            <Badge bg="warning" text="dark" className="w-100 rounded-0 text-start">ImDB Score: <p className='bg-white rounded-0 d-inline px-2 py-1'>
                                 {Math.floor(movieDetail.vote_average)}
                             </p></Badge>
                         </ListGroup.Item>
-                        <ListGroup.Item className="bg-none text-light border-0">
-                            <Badge bg="warning" text="dark">Movie Language: <p className='bg-white rounded d-inline'>{
+                        <ListGroup.Item className="bg-none text-light border-0 py-1">
+                            <Badge bg="warning" className="w-100 rounded-0 text-start" text="dark">Movie Language: <p className='bg-white d-inline rounded-0 px-2 py-1'>{
                                 movieDetail.original_language !== undefined ?
                                     movieDetail.original_language.toUpperCase()
                                     :
                                     ''
                             }</p></Badge>
                         </ListGroup.Item>
-                        <ListGroup.Item className="bg-none text-light border-0">
-                            <Badge bg="warning" text="dark">Category: <p className='bg-white rounded d-inline'>
+                        <ListGroup.Item className="bg-none text-light border-0 py-1">
+                            <Badge bg="warning" className="w-100 rounded-0 text-start" text="dark">Category: </Badge>
+                            <ListGroup>
                                 {
                                     movieDetail.genres !== undefined ?
                                         movieDetail.genres.map((cat, index) => (
-                                            <><p className='d-inline' key={cat.id}>{cat.name}</p>, </>
+                                            <ListGroup.Item className="rounded-0 py-0" key={cat.id}>{cat.name}</ListGroup.Item>
                                         )) :
                                         ''
                                 }
-                            </p></Badge>
+                            </ListGroup>
+
                         </ListGroup.Item>
 
                     </ListGroup>
