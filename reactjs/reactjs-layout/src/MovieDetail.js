@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Container, Row } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 
 function MovieDetail() {
@@ -14,13 +15,14 @@ function MovieDetail() {
             })
     }, [])
     return (
-        <div>
-            {console.log(movie_id)}
-            {
-                console.log(movieDetail)
-            }
-            <h1>{movieDetail.original_title}</h1>
-        </div>
+        <Container className="bg-dark p-0" fluid={true}>
+            <div className="p-5 bg-primary text-white rounded">
+                <h1>IMAGE </h1>
+            </div>
+            <Row>
+
+            </Row>
+        </Container>
     )
 }
 
