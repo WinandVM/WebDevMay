@@ -108,3 +108,17 @@ img{
 .movie:hover{
     padding:10px
 }
+
+/* movie image in jumbotron element */
+.movie-img{
+    background-size: 100% !important;
+    background-position: center !important;
+}
+/* movie title in jumbotron element */
+.movie-title{
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+}
+
+.bg-none{
+    background-color: transparent !important;
+}
