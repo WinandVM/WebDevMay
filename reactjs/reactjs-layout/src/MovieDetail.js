@@ -5,7 +5,9 @@ import { useParams } from 'react-router-dom'
 
 function MovieDetail() {
     const [movieDetail, setMovieDetail] = useState([])
+    const [movieTrailer,setMovieTrailer] = useState('')
     // https://api.themoviedb.org/3/movie/616037?api_key=07a61de5b731a869bc9cec8e25d2c8a8&language=en-US
+    // https://api.themoviedb.org/3/movie/616037/videos?api_key=07a61de5b731a869bc9cec8e25d2c8a8&language=en-US
     const { movie_id } = useParams()
     // async func 
     useEffect(() => {
@@ -14,6 +16,13 @@ function MovieDetail() {
             .then(data => {
                 setMovieDetail(data)
             })
+            // https://www.youtube.com/watch?v=oRu0KYKWEGQ
+        fetch(`https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=07a61de5b731a869bc9cec8e25d2c8a8&language=en-US`)
+        .then(response=>response.json())
+        .then(data=>{
+           setMovieTrailer(data.results[0].key)
+           // console.log(data)
+        })
     }, [movie_id])
     return (
         <Container className="bg-dark p-0" fluid={true}>
@@ -47,20 +56,20 @@ function MovieDetail() {
                                         ''
                                 }
                             </ListGroup>
-
+                                
                         </ListGroup.Item>
 
                         <ListGroup.Item className="bg-none text-light border-0 py-1">
                             <Badge bg="warning" className="w-100 rounded-0 text-start" text="dark">Production: </Badge>
                             <ListGroup>
                                 {
-                                    movieDetail.production_companies !== undefined?
-                                    movieDetail.production_companies.map((prod)=>(
-                                        <ListGroup.Item className="rounded-0 py-0" key={prod.id}>
-                                            <a href={movieDetail.homepage} className="text-decoration-none text-dark" target="_blank">{prod.name}</a>
-                                        </ListGroup.Item>
-                                    )):
-                                    ''
+                                    movieDetail.production_companies !== undefined ?
+                                        movieDetail.production_companies.map((prod) => (
+                                            <ListGroup.Item className="rounded-0 py-0" key={prod.id}>
+                                                <a href={movieDetail.homepage} className="text-decoration-none text-dark" target="_blank">{prod.name}</a>
+                                            </ListGroup.Item>
+                                        )) :
+                                        ''
                                 }
                             </ListGroup>
 
@@ -69,7 +78,16 @@ function MovieDetail() {
                     </ListGroup>
                 </Col>
                 <Col md={8}>
-                                <h1 className="text-light display-6 p-2 movie-story">Overview</h1>
+                    <h1 className="text-light display-6 p-2 movie-story">Overview</h1>
+                    <p className="text-light">
+                        {
+                            movieDetail.overview !== undefined ?
+                                movieDetail.overview
+                                :
+                                'not available'
+                        }
+                    </p>
+                    <iframe width={560} height={315} src={`https://www.youtube.com/embed/${movieTrailer}`} title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </Col>
             </Row>
         </Container>
