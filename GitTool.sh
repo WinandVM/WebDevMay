@@ -1,5 +1,27 @@
-# Git revert
-# read commit hash
+InstallGit(){
+    echo "Installing Git"
+    sudo apt-get install git
+    echo "Git installed"
+}
+
+# Check if git is installed
+if ! [ -x "$(command -v git)" ]; then
+    echo 'Error: git is not installed.' >&2
+    echo "Installing Git"
+    InstallGit
+    
+    exit 1
+fi
+
+
+GitConfig(){
+    # read username
+    read -p "Enter your username: " username
+    # read email
+    read -p "Enter your email: " email
+    git config --global user.name "$username"
+    git config --global user.email "$email"
+}
 
 CommitDelete(){
     read -p "Enter commit hash: " commitHash
