@@ -9,8 +9,9 @@ CommitDelete(){
 }
 
 RepositoryUpdate(){
-    #commit message
-    read -p "Enter commit message: " commitMessage
+    #commit message with color
+    echo -e "\e[1;32mEnter commit message: \e[0m"
+    read -p "> " commitMessage
     git pull
     git add .
     git commit -m "$commitMessage"
@@ -18,10 +19,11 @@ RepositoryUpdate(){
 }
 
 Menu(){
-    echo "1. Commit delete"
-    echo "2. Repository update"
-    echo "3. Exit"
-    read -p "Enter your choice: " choice
+    echo -e "\e[1;32m1. Commit delete\e[0m"
+    echo -e "\e[1;32m2. Repository update\e[0m"
+    echo -e "\e[1;32m3. Exit\e[0m"
+    echo -e "\e[1;33mEnter your choice:\e[0m"
+    read -p "> " choice
     case $choice in
         1) CommitDelete;;
         2) RepositoryUpdate;;
