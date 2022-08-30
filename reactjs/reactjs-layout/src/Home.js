@@ -37,7 +37,7 @@ function Home({inputValue,result}) {
       </Container>
       <ul className="movies p-4 bg-dark">
         {
-          inputValue!==''?
+          inputValue!=='' && result !==undefined?
           result.map((movie, index) => (
               <MovieCard movie={movie} key={index} test={'this is a test props data'} />
             ))
