@@ -13,6 +13,7 @@ if ! [ -x "$(command -v git)" ]; then
     exit 1
 fi
 
+
 GitConfig(){
     # read username
     read -p "Enter your username: " username
