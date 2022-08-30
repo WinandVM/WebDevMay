@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import {FaTwitter,FaInstagram,FaLinkedin} from 'react-icons/fa'
-function Header() {
+function Header({searchResultHandler}) {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -13,7 +13,7 @@ function Header() {
                         <Link to={'/'} className="nav-link text-decoration-none">Homepage</Link>
                         <Link to={'/contact'} className="nav-link text-decoration-none">Contact</Link>
                         <NavDropdown title="Categories" id="collasible-nav-dropdown">
-                        <Link to={'/movies/adventure'} className="dropdown-item text-decoration-none">Adventure</Link>
+                        <Link to={'/search'} onClick={searchResultHandler} className="dropdown-item text-decoration-none">Adventure</Link>
 
                             {/* <NavDropdown.Divider /> */}
                             <Link to={'/movies/comedy'} className="dropdown-item text-decoration-none">Comedy</Link>
