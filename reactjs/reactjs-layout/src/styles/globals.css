@@ -122,3 +122,11 @@ img{
 .bg-none{
     background-color: transparent !important;
 }
+
+.detail-left{
+    border-right: 1px solid #3e3e3f;
+}
+
+.movie-story {
+    border-bottom: 1px solid #616161;
+}

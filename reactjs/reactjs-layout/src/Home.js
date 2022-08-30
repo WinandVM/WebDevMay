@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { CardGroup, Container } from 'react-bootstrap'
 import CarouselComponent from './components/Homepage/CarouselComponent'
 import MovieCard from './components/Homepage/MovieCard'
-
 function Home() {
   const [movies,setMovies] = useState([])
 
@@ -14,6 +13,7 @@ function Home() {
 
   useEffect(()=>{
     fetchMovies()
+    
   },[])
   
   return (

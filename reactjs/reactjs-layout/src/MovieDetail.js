@@ -21,7 +21,7 @@ function MovieDetail() {
                 <h1 className='text-center movie-title'>{movieDetail.original_title}</h1>
             </div>
             <Row className="p-0 m-0 ">
-                <Col md={3} className="p-3">
+                <Col md={3} className="p-3 detail-left">
                     <ListGroup>
                         <ListGroup.Item className="bg-none text-light border-0 py-1 ">
                             <Badge bg="warning" text="dark" className="w-100 rounded-0 text-start">ImDB Score: <p className='bg-white rounded-0 d-inline px-2 py-1'>
@@ -50,10 +50,26 @@ function MovieDetail() {
 
                         </ListGroup.Item>
 
+                        <ListGroup.Item className="bg-none text-light border-0 py-1">
+                            <Badge bg="warning" className="w-100 rounded-0 text-start" text="dark">Production: </Badge>
+                            <ListGroup>
+                                {
+                                    movieDetail.production_companies !== undefined?
+                                    movieDetail.production_companies.map((prod)=>(
+                                        <ListGroup.Item className="rounded-0 py-0" key={prod.id}>
+                                            <a href={movieDetail.homepage} className="text-decoration-none text-dark" target="_blank">{prod.name}</a>
+                                        </ListGroup.Item>
+                                    )):
+                                    ''
+                                }
+                            </ListGroup>
+
+                        </ListGroup.Item>
+
                     </ListGroup>
                 </Col>
                 <Col md={8}>
-
+                                <h1 className="text-light display-6 p-2 movie-story">Overview</h1>
                 </Col>
             </Row>
         </Container>
