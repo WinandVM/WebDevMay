@@ -1,8 +1,8 @@
 import React from 'react'
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import {FaTwitter,FaInstagram,FaLinkedin} from 'react-icons/fa'
-function Header({searchResultHandler}) {
+import { FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
+function Header({ searchResultHandler,inputHandler }) {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -13,17 +13,26 @@ function Header({searchResultHandler}) {
                         <Link to={'/'} className="nav-link text-decoration-none">Homepage</Link>
                         <Link to={'/contact'} className="nav-link text-decoration-none">Contact</Link>
                         <NavDropdown title="Categories" id="collasible-nav-dropdown">
-                        <Link to={'/search'} onClick={searchResultHandler} className="dropdown-item text-decoration-none">Adventure</Link>
+                            <Link to={'/search'} onClick={searchResultHandler} className="dropdown-item text-decoration-none">Adventure</Link>
 
                             {/* <NavDropdown.Divider /> */}
                             <Link to={'/movies/comedy'} className="dropdown-item text-decoration-none">Comedy</Link>
                         </NavDropdown>
                     </Nav>
-                    <Nav className="d-flex flex-row">
-                        <Link to={'/#social'}><FaTwitter fill='white' className="display-6 bg-primary p-1 rounded-1 mx-1"/></Link>
-                        <Link to={'/#social'}><FaLinkedin fill='white' className="display-6 bg-primary p-1 rounded-1 me-1"/></Link>
-                        <Link to={'/#social'}><FaInstagram fill='white' className="display-6 bg-instagram p-1 rounded-1"/></Link>
+                    <Nav className="d-flex flex-row mx-2">
+                        <Link to={'/#social'}><FaTwitter fill='white' className="display-6 bg-primary p-1 rounded-1 mx-1" /></Link>
+                        <Link to={'/#social'}><FaLinkedin fill='white' className="display-6 bg-primary p-1 rounded-1 me-1" /></Link>
+                        <Link to={'/#social'}><FaInstagram fill='white' className="display-6 bg-instagram p-1 rounded-1" /></Link>
                     </Nav>
+                    <Form className="d-flex">
+                        <Form.Control
+                        onChange={inputHandler}
+                            type="search"
+                            placeholder="Search"
+                            className="me-2"
+                            aria-label="Search"
+                        />
+                    </Form>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

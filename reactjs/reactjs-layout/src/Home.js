@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, ButtonGroup, CardGroup, Container } from 'react-bootstrap'
 import CarouselComponent from './components/Homepage/CarouselComponent'
 import MovieCard from './components/Homepage/MovieCard'
-function Home() {
+function Home({inputValue}) {
   const [movies, setMovies] = useState([])
   const [page,setPage] = useState(1)
 
@@ -32,7 +32,7 @@ function Home() {
       <Container fluid={true} className="p-0">
         <CarouselComponent />
         {
-          console.log(page,"Page number")
+          console.log(inputValue,"this is input value")
         }
       </Container>
       <ul className="movies p-4 bg-dark">
