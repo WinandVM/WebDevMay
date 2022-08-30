@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, ButtonGroup, CardGroup, Container } from 'react-bootstrap'
 import CarouselComponent from './components/Homepage/CarouselComponent'
 import MovieCard from './components/Homepage/MovieCard'
-function Home({inputValue}) {
+function Home({inputValue,result}) {
   const [movies, setMovies] = useState([])
   const [page,setPage] = useState(1)
 
@@ -37,12 +37,19 @@ function Home({inputValue}) {
       </Container>
       <ul className="movies p-4 bg-dark">
         {
-          movies != undefined ?
+          result.length!==0?
+          result.map((movie, index) => (
+              <MovieCard movie={movie} key={index} test={'this is a test props data'} />
+            ))
+            :
+          (
+            movies !== undefined ?
             movies.map((movie, index) => (
               <MovieCard movie={movie} key={index} test={'this is a test props data'} />
             ))
             :
             ''
+          )
         }
       </ul>
 

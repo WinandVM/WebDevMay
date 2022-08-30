@@ -18,20 +18,20 @@ function App() {
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=07a61de5b731a869bc9cec8e25d2c8a8&language=en-US&page=1&query=${inputValue!==''?inputValue:'a'}`)
         .then(response=>response.json())
         .then(data=>{
-            console.log(data.results)
+            setResult(data.results)
         })
     }
     const searchResult = ()=>{
         console.log('This is search handler')
-        setResult([{
-            id:1,
-            name:'Batman & Joker'
-        }])
+        // setResult([{
+        //     id:1,
+        //     name:'Batman & Joker'
+        // }])
     }
     return (
         <Layout searchResultHandler={searchResult} inputHandler={inputHandler}>
             <Routes>
-                <Route path='/' element={<Home inputValue={inputValue} />} />
+                <Route path='/' element={<Home inputValue={inputValue} result={result} />} />
                 <Route path='/search' element={<SearchResults result={result}/>}/>
                 <Route path='/:movie_id' element={<MovieDetail/>}/>
                 <Route path='/contact' element={<Contact />} />
