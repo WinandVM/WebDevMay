@@ -10,8 +10,12 @@ function App() {
     const [result,setResult] = useState([])
     const [inputValue,setInputValue] = useState('')
     const inputHandler = (e) =>{
-        setInputValue(e.target.value)
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=07a61de5b731a869bc9cec8e25d2c8a8&language=en-US&page=1&query=${e.target.value}`)
+        if(e.target.value !==''){
+            setInputValue(e.target.value)
+        }else{
+            setInputValue('a')
+        }
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=07a61de5b731a869bc9cec8e25d2c8a8&language=en-US&page=1&query=${inputValue!==''?inputValue:'a'}`)
         .then(response=>response.json())
         .then(data=>{
             console.log(data.results)
