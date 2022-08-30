@@ -28,7 +28,7 @@ function Home({ inputValue, result }) {
     }
     fetchMovies()
 
-    fetch('/json/213.49.146.125')
+    fetch('/json/8.8.8.8')
       .then(res => res.json())
       .then(data => {
         console.log(data)
