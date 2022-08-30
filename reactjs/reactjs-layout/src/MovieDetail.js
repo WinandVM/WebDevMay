@@ -66,7 +66,7 @@ function MovieDetail() {
                                     movieDetail.production_companies !== undefined ?
                                         movieDetail.production_companies.map((prod) => (
                                             <ListGroup.Item className="rounded-0 py-0" key={prod.id}>
-                                                <a href={movieDetail.homepage} className="text-decoration-none text-dark" target="_blank">{prod.name}</a>
+                                                <a href={movieDetail.homepage} rel="noreferrer" className="text-decoration-none text-dark" target="_blank">{prod.name}</a>
                                             </ListGroup.Item>
                                         )) :
                                         ''
