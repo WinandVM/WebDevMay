@@ -65,7 +65,10 @@ function Home({ inputValue, result }) {
       <div className="pagination bg-dark d-flex justify-content-center pb-2">
         <ButtonGroup aria-label="Basic example">
           <Button variant="primary" onClick={prevPage} className="rounded-0">Previous</Button>
-          <Button variant="primary" onClick={nextPage} className="rounded-0">Next</Button>
+          <Button variant="primary" onClick={()=>{
+            nextPage()
+            inputHandler()
+          }} className="rounded-0">Next</Button>
         </ButtonGroup>
       </div>
     </>
