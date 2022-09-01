@@ -2,19 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Button, ButtonGroup, Container } from 'react-bootstrap'
 import CarouselComponent from './components/Homepage/CarouselComponent'
 import MovieCard from './components/Homepage/MovieCard'
-function Home({ inputValue, result }) {
+function Home({ inputValue, result,page,nextPage,prevPage }) {
   const [movies, setMovies] = useState([])
-  const [page, setPage] = useState(1)
-
-  // clickhandlers for pagination
-  const nextPage = () => setPage(page + 1)
-  const prevPage = () => {
-    if (page <= 1) {
-      return
-    } else {
-      setPage(page - 1)
-    }
-  }
+  
 
 
 
@@ -67,7 +57,7 @@ function Home({ inputValue, result }) {
           <Button variant="primary" onClick={prevPage} className="rounded-0">Previous</Button>
           <Button variant="primary" onClick={()=>{
             nextPage()
-            inputHandler()
+
           }} className="rounded-0">Next</Button>
         </ButtonGroup>
       </div>
