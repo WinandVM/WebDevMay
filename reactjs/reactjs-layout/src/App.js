@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout/Layout'
 import Contact from './Contact'
 import Home from './Home'
+import {Navigate} from 'react-router-dom'
 import MovieDetail from './MovieDetail'
 import SearchResults from './SearchResults'
 function App() {
@@ -21,7 +22,10 @@ function App() {
         .then(response=>response.json())
         .then(data=>{
             setResult(data.results)
+            
         })
+        .catch(err=>console.log(err))
+     //   .finally(()=><Navigate to={'/'}/>)
     }
     const searchResult = ()=>{
         console.log('This is search handler')

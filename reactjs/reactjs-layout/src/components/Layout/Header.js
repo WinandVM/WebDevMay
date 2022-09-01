@@ -1,8 +1,14 @@
 import React from 'react'
 import { Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
 function Header({ searchResultHandler,inputHandler }) {
+    const x = useNavigate();
+    const RedirectToHome =(e)=>{
+        if(e.key==='Enter'){
+            return x('/')
+        }
+    }
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -24,15 +30,16 @@ function Header({ searchResultHandler,inputHandler }) {
                         <Link to={'/#social'}><FaLinkedin fill='white' className="display-6 bg-primary p-1 rounded-1 me-1" /></Link>
                         <Link to={'/#social'}><FaInstagram fill='white' className="display-6 bg-instagram p-1 rounded-1" /></Link>
                     </Nav>
-                    <Form className="d-flex">
-                        <Form.Control
+                    <div className="d-flex">
+                    <Form.Control
                         onChange={inputHandler}
                             type="search"
+                            onKeyDown={RedirectToHome}
                             placeholder="Search"
                             className="me-2"
                             aria-label="Search"
                         />
-                    </Form>
+                    </div>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
