@@ -19,6 +19,11 @@ const APIFetch ={
         let response = await fetch(`${base_url}/users/${id}`)
         let data = await response.json()
         return data
+    },
+    getAllQuestions:async function(){
+        let response = await fetch(`https://opentdb.com/api.php?amount=10&category=18`)
+        let data = await response.json()
+        return data
     }
 }
 
