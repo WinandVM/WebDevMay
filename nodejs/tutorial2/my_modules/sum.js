@@ -21,6 +21,7 @@ const fetch = require('node-fetch') // import fetch module
 
 // export multiple functions
 module.exports = {
+    
     getName:function(name){
         return name
     },

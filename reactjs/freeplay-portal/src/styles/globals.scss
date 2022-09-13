@@ -1,0 +1,54 @@
+@import 'footer.scss';
+
+.header-image {
+    background-color: black !important;
+
+    .container {
+        z-index: 999;
+    }
+
+    &::before {
+        content: "";
+        background: url("../../public/assets/images/bg.jpg");
+        background-size: auto;
+        opacity: 0.3;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-repeat: no-repeat;
+        background-position: center right;
+        width: auto;
+        height: auto;
+
+    }
+
+}
+
+body {
+    background-color: black !important;
+    z-index: 999 !important;
+    margin:0 !important;
+    padding:0 !important;
+    &::before {
+        content: "";
+        background: url("../../public/assets/images/content.jpg");
+        background-size: auto;
+        opacity: 0.1;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        left: 0;
+        background-repeat: no-repeat;
+        background-position: center right;
+        width: auto;
+        height: auto;
+    }
+}
+
+.bg-game{
+    background-color: #252525 !important;
+}
