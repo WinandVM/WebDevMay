@@ -3,7 +3,7 @@ import { Button, Card } from 'react-bootstrap'
 
 function Game({game}) {
   return (
-    <Card className="bg-game">
+    <Card className="bg-transparent">
       <div className="card-body">
                 <div className="row">
                     <div className="col-3 align-self-center mt-n2">

@@ -1,11 +1,18 @@
 import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { Col, Container, Form, InputGroup, Row } from 'react-bootstrap'
 import Game from '../components/Game'
 import Context from '../context/index'
+import ReactPaginate from 'react-paginate';
 function Home() {
     const { FetchAction, setOptions, options, games, setGames } = useContext(Context)
     const [url, setUrl] = useState('')
+    const [currentItems, setCurrentItems] = useState(null);
+    const [pageCount, setPageCount] = useState(0);
+    const [allGames, setAllGames] = useState([])
+    // Here we use item offsets; we could also use page offsets
+    // following the API or data you're working with.
+    const [itemOffset, setItemOffset] = useState(0);
     const categories = [
         "mmorpg",
         "shooter",
@@ -68,38 +75,61 @@ function Home() {
     }
 
 
+    useEffect(() => {
+        const FetchAllGames = async () => {
+            let response = await axios.get(url)
+            let data = await response.data
+            setAllGames(data)
+        }
+        FetchAllGames()
+    }, [])
 
     useEffect(() => {
-        if(options.platform === '' && options.category === '' && options.sort === ''){
+        if (options.platform === '' && options.category === '' && options.sort === '') {
             setUrl('/api/games')
         }
-        else if(options.platform !== '' && options.category === '' && options.sort === ''){
+        else if (options.platform !== '' && options.category === '' && options.sort === '') {
             setUrl(`/api/games?platform=${options.platform}`)
         }
-        else if(options.platform === '' && options.category !== '' && options.sort === ''){
+        else if (options.platform === '' && options.category !== '' && options.sort === '') {
             setUrl(`/api/games?category=${options.category}`)
         }
-        else if(options.platform === '' && options.category === '' && options.sort !== ''){
+        else if (options.platform === '' && options.category === '' && options.sort !== '') {
             setUrl(`/api/games?sort-by=${options.sort}`)
         }
-        else if(options.platform !== '' && options.category !== '' && options.sort === ''){
+        else if (options.platform !== '' && options.category !== '' && options.sort === '') {
             setUrl(`/api/games?platform=${options.platform}&category=${options.category}`)
         }
-        else if(options.platform !== '' && options.category === '' && options.sort !== ''){
+        else if (options.platform !== '' && options.category === '' && options.sort !== '') {
             setUrl(`/api/games?platform=${options.platform}&sort-by=${options.sort}`)
         }
-        else if(options.platform === '' && options.category !== '' && options.sort !== ''){
+        else if (options.platform === '' && options.category !== '' && options.sort !== '') {
             setUrl(`/api/games?category=${options.category}&sort-by=${options.sort}`)
         }
-        else if(options.platform !== '' && options.category !== '' && options.sort !== ''){
+        else if (options.platform !== '' && options.category !== '' && options.sort !== '') {
             setUrl(`/api/games?platform=${options.platform}&category=${options.category}&sort-by=${options.sort}`)
         }
 
-        axios.get(url)
-        .then(res=>res.data)
-        .then(data=>setGames(data))
-          
-    }, [options,url])
+
+        // use pagination in fetchingData function ? maybe it would solve the problem
+        const doYourJob = async () => {
+            let data = await allGames
+            const endOffset = itemOffset + 10;
+            console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+            setCurrentItems(data.slice(itemOffset, endOffset));
+            setPageCount(Math.ceil(data.length / 10));
+        }
+        doYourJob()
+
+
+    }, [options, url, itemOffset])
+
+    const handlePageClick = (event) => {
+        const newOffset = event.selected * 10 % allGames.length;
+        console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
+        setItemOffset(newOffset);
+    };
+
     return (
         <Container className="text-light mt-3" fluid>
             <Row className="align-items-start justify-content-center">
@@ -165,18 +195,45 @@ function Home() {
                         </Form>
                     </div>
                 </Col>
-                <Col md={9} className="bg-dark py-2 px-3 mb-5">
+                <Col md={9} className="bg-transparent py-2 px-3 mb-5">
                     {
-                       games.length >0?
-                       games.map((_,idx)=>(
-                        <>
-                        <Game key={idx} game={_}/>
-                        </>
-                       ))
-                       :
-                       'loading'
+                        currentItems !== null && (typeof games !== 'string') && currentItems.length > 0 ?
+                            currentItems.map((_, idx) => (
+                                <>
+                                    <Game key={idx} game={_} />
+                                </>
+                            ))
+                            :
+                            'loading'
                     }
+
+                    {
+                        console.log(allGames, "asdadasd", currentItems, "asdasdasdasd")
+                    }
+
+                    <ReactPaginate
+                        nextLabel="next >"
+                        onPageChange={handlePageClick}
+                        pageRangeDisplayed={3}
+                        marginPagesDisplayed={2}
+                        pageCount={pageCount}
+                        previousLabel="< previous"
+                        pageClassName="page-item"
+                        pageLinkClassName="page-link"
+                        previousClassName="page-item"
+                        previousLinkClassName="page-link"
+                        nextClassName="page-item"
+                        nextLinkClassName="page-link"
+                        breakLabel="..."
+                        breakClassName="page-item"
+                        breakLinkClassName="page-link"
+                        containerClassName="pagination"
+                        activeClassName="active"
+                        renderOnZeroPageCount={null}
+                    />
                 </Col>
+
+
             </Row>
         </Container>
     )
