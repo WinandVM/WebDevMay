@@ -147,8 +147,10 @@ const server = http.createServer((req,res)=>{
         })
     }
     else if(req.url === '/login'){
-        res.write('login')
-        res.end()
+        fs.readFile('login.html','utf8',(err,login)=>{
+            res.write(login)
+            res.end()
+        })
     }
     
 })
