@@ -8,5 +8,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "s1eep": "^1.0.9",
+    "ytdl-core": "^4.11.2"
+  }
 }
