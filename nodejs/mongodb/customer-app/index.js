@@ -31,29 +31,46 @@ const customerObj = {
 function EmailValidation(email) {
     let domains = ['gmail.com', 'hotmail.com']
 
-    let boolResult=false
-    domains.forEach(domain=>{
-        if(email.split('@')[1]===domain){
-            boolResult = true
-        }else{
-            boolResult = false
-        }
-    })
-    return boolResult
+    let foundEmail = domains.filter(domain => domain === email.split('@')[1])
+    // console.log(foundEmail)
+    if (foundEmail.length > 0) {
+        return true
+    } else {
+        return false
+    }
 }
 
-// EmailValidation('atilla@gmail.com')
+// userValidation
+
+function isCustomerExist(fullname){
+    
+    return Customer.exists({
+        fullname:fullname
+    })
+    .then(res=>res)
+    
+    
+}
+
+// test isCustomerExist
+isCustomerExist('John Doe')
+.then(res=>{
+    if(res!==null){
+        console.log('customer already exist')
+    }
+})
 
 // 4 create an object from model
 const customer1 = new Customer(customerObj)
 
-if(EmailValidation(customer1.email)){
+if (EmailValidation(customer1.email)) {
     //  save to db
-    customer1.save()
-    .then(data=>{
-        console.log(data, "SAVED")
-    })
-}else{
+    console.log('true')
+    // customer1.save()
+    // .then(data=>{
+    //     console.log(data, "SAVED")
+    // })
+} else {
     console.log("Please enter a valid email")
 }
 
