@@ -58,9 +58,12 @@ function AddCustomer() {
                         console.log("Invalid Email")
                     :
                     console.log('fullname is not available')
-                setTimeout(() => console.clear(), 2000) // clear console after 2 seconds
+                 // clear console after 2 seconds
             })
-            .finally(() => setTimeout(() => Menu(), 2000))
+            .finally(() => setTimeout(() => {
+                console.clear()
+                Menu()
+            }, 2000))
 
     })
 }
