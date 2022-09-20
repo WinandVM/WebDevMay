@@ -92,7 +92,34 @@ function GetAllCustomers() {
         })
 }
 
+function DeleteCustomer() {
+    prompt.get(['fullname'], (err, customer) => {
+        isCustomerExist(customer.fullname)
+            .then(fullname => {
+                fullname !== null ?
+                    Customer.findOneAndDelete({
+                        fullname:customer.fullname
+                    })
+                        .then(() => console.log(`${customer.fullname} is deleted.`))
+                    :
+                    console.log('Customer not found')
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    console.clear()
+                    Menu()
+                }, 3000)
+            })
+    })
+}
+
 function Menu() {
+    console.log(`
+────██──────▀▀▀██ Customer app v.1.0
+──▄▀█▄▄▄─────▄▀█▄▄▄
+▄▀──█▄▄──────█─█▄▄
+─▄▄▄▀──▀▄───▄▄▄▀──▀▄
+─▀───────▀▀─▀───────▀▀`)
     console.log(`1. Add Customer\n2. Update Customer\n3. Delete Customer\n4. Get Customers\n5. Exit`)
     prompt.get(['option'], (err, opt) => {
         switch (opt.option) {
@@ -105,8 +132,7 @@ function Menu() {
                 Menu()
                 break;
             case '3':
-                console.log('Delete Customer')
-                Menu()
+                DeleteCustomer()
                 break;
             case '4':
                 GetAllCustomers()
