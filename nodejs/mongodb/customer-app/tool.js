@@ -10,7 +10,10 @@ async function main() {
 
 // 1. create a schema
 const customerSchema = new mongoose.Schema({
-    fullname: String,
+    fullname: {
+        type:String,
+        lowercase:true,
+    },
     email: String,
     phone: String,
     address: String,
@@ -19,6 +22,15 @@ const customerSchema = new mongoose.Schema({
 
 // 2. compile schema to model
 const Customer = mongoose.model('Customer', customerSchema)
+
+function clean(obj) {
+    for (var propName in obj) {
+      if (obj[propName] === '' || obj[propName] === undefined) {
+        delete obj[propName];
+      }
+    }
+    return obj
+  }
 
 // email validation
 function EmailValidation(email) {
@@ -68,6 +80,15 @@ function AddCustomer() {
     })
 }
 
+function UpdateCustomer(){
+    prompt.get(['fullname', 'email', 'phone', 'address', 'website'],(err,customer)=>{
+        Customer.findOneAndUpdate({fullname:customer.fullname},clean(customer),(err)=>{
+            console.log('customer data updated!!!')
+        })
+    //    console.log(clean(customer))
+    })
+}
+
 function GetAllCustomers() {
     Customer.find({})
         .then(data => {
@@ -114,7 +135,7 @@ function DeleteCustomer() {
 }
 
 function Menu() {
-    console.log(`
+    console.log('\x1b[33m%s\x1b[0m',`
 ────██──────▀▀▀██ Customer app v.1.0
 ──▄▀█▄▄▄─────▄▀█▄▄▄
 ▄▀──█▄▄──────█─█▄▄
@@ -128,8 +149,17 @@ function Menu() {
                 AddCustomer()
                 break;
             case '2':
-                console.log('Update Customer')
-                Menu()
+                prompt.get(['fullname'],(err,customer)=>{
+                    Customer.find({fullname:customer.fullname})
+                    .then(response=>response.length>0)
+                    .then(bool=>{
+                        if(bool){
+                            UpdateCustomer()
+                        }
+                    })
+                   
+                 //   UpdateCustomer()
+                })
                 break;
             case '3':
                 DeleteCustomer()
