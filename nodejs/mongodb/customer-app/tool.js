@@ -5,7 +5,7 @@ const prompt = require('prompt')
 main().catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect('mongodb://localhost:27017/customers', (err) => console.log('connected to db'));
+    await mongoose.connect('mongodb://localhost:27017/customers');
 }
 
 // 1. create a schema
@@ -34,10 +34,50 @@ function EmailValidation(email) {
 }
 
 // userValidation
-function isCustomerExist(fullname){
+function isCustomerExist(fullname) {
     return Customer.exists({
-        fullname:fullname
+        fullname: fullname
     })
-    .then(res=>res)
+        .then(res => res)
 }
 
+prompt.start();
+
+function AddCustomer(){
+    prompt.get(['fullname','email'],(err,customer)=>{
+        console.log(customer)
+        Menu()
+    })
+}
+
+function Menu(){
+    console.log(`1. Add Customer\n2. Update Customer\n3. Delete Customer\n4. Get Customers\n5. Exit`)
+prompt.get(['option'], (err, opt) => {
+    switch (opt.option) {
+        case '1':
+            // console.log('Add Customer')
+            AddCustomer()
+            break;
+        case '2':
+            console.log('Update Customer')
+            Menu()
+            break;
+        case '3':
+            console.log('Delete Customer')
+            Menu()
+            break;
+        case '4':
+            console.log("Get All Customers")
+            Menu()
+            break;
+        case '5':
+            console.log("Exit")
+            process.exit()
+        default:
+            console.log('Invalid Option')
+            Menu()
+    }
+})
+}
+
+Menu()
