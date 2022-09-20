@@ -43,41 +43,56 @@ function isCustomerExist(fullname) {
 
 prompt.start();
 
-function AddCustomer(){
-    prompt.get(['fullname','email'],(err,customer)=>{
-        console.log(customer)
-        Menu()
+function AddCustomer() {
+    prompt.get(['fullname', 'email', 'phone', 'address', 'website'], (err, customer) => {
+        // console.log(customer)
+        // create obj from model
+        const customerObj = new Customer(customer)
+        isCustomerExist(customer.fullname)
+            .then(fullname => {
+                fullname === null ?
+                    EmailValidation(customer.email) ?
+                        customerObj.save()
+                            .then(data => console.log("Customer is saved!"))
+                        :
+                        console.log("Invalid Email")
+                    :
+                    console.log('fullname is not available')
+                setTimeout(() => console.clear(), 2000) // clear console after 2 seconds
+            })
+            .finally(() => setTimeout(() => Menu(), 2000))
+
     })
 }
 
-function Menu(){
+function Menu() {
     console.log(`1. Add Customer\n2. Update Customer\n3. Delete Customer\n4. Get Customers\n5. Exit`)
-prompt.get(['option'], (err, opt) => {
-    switch (opt.option) {
-        case '1':
-            // console.log('Add Customer')
-            AddCustomer()
-            break;
-        case '2':
-            console.log('Update Customer')
-            Menu()
-            break;
-        case '3':
-            console.log('Delete Customer')
-            Menu()
-            break;
-        case '4':
-            console.log("Get All Customers")
-            Menu()
-            break;
-        case '5':
-            console.log("Exit")
-            process.exit()
-        default:
-            console.log('Invalid Option')
-            Menu()
-    }
-})
+    prompt.get(['option'], (err, opt) => {
+        switch (opt.option) {
+            case '1':
+                // console.log('Add Customer')
+                AddCustomer()
+                break;
+            case '2':
+                console.log('Update Customer')
+                Menu()
+                break;
+            case '3':
+                console.log('Delete Customer')
+                Menu()
+                break;
+            case '4':
+                console.log("Get All Customers")
+                Menu()
+                break;
+            case '5':
+                console.log("Exit")
+                process.exit()
+            default:
+                console.log('Invalid Option')
+                Menu()
+        }
+    })
 }
 
 Menu()
