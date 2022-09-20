@@ -20,8 +20,8 @@ const Customer = mongoose.model('Customer', customerSchema)
 
 // 3 Customer-1 user object
 const customerObj = {
-    fullname: 'John Doe',
-    email: 'john@yahoo.com',
+    fullname: 'Michael Jackson',
+    email: 'john@gmail.com',
     phone: '1234567890',
     address: '1234 Main St',
     website: 'www.john.com'
@@ -43,42 +43,41 @@ function EmailValidation(email) {
 // userValidation
 
 function isCustomerExist(fullname){
-    
     return Customer.exists({
         fullname:fullname
     })
     .then(res=>res)
-    
-    
 }
 
-// test isCustomerExist
-isCustomerExist('John Doe')
-.then(res=>{
-    if(res!==null){
-        console.log('customer already exist')
-    }
-})
+
 
 // 4 create an object from model
 const customer1 = new Customer(customerObj)
 
-if (EmailValidation(customer1.email)) {
-    //  save to db
-    console.log('true')
-    // customer1.save()
-    // .then(data=>{
-    //     console.log(data, "SAVED")
-    // })
-} else {
-    console.log("Please enter a valid email")
-}
-
 // add data
+isCustomerExist(customer1.fullname)
+.then(res=>{
+    if(res!==null){
+        console.log('customer already exist')
+    }else{
+        if (EmailValidation(customer1.email)) {
+            //  save to db
+            console.log('true')
+            customer1.save()
+            .then(data=>{
+                console.log(data, "SAVED")
+            })
+        } else {
+            console.log("Please enter a valid email")
+        }
+    }
+})
+
+// update data
+
 
 
 // delete data
 
 // find data
 
-// update data
