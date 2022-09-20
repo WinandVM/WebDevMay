@@ -58,7 +58,7 @@ function AddCustomer() {
                         console.log("Invalid Email")
                     :
                     console.log('fullname is not available')
-                 // clear console after 2 seconds
+                // clear console after 2 seconds
             })
             .finally(() => setTimeout(() => {
                 console.clear()
@@ -66,6 +66,30 @@ function AddCustomer() {
             }, 2000))
 
     })
+}
+
+function GetAllCustomers() {
+    Customer.find({})
+        .then(data => {
+            data.forEach(customer => {
+                console.table({
+                    fullname: customer.fullname,
+                    email: customer.email,
+                    phone: customer.phone,
+                    address: customer.address,
+                    website: customer.website
+                })
+            })
+        })
+        .finally(() => {
+            console.log('To return menu press 0')
+            prompt.get(['return'], (err, answer) => {
+                if (answer.return === '0') {
+                    console.clear()
+                    Menu()
+                }
+            })
+        })
 }
 
 function Menu() {
@@ -85,8 +109,7 @@ function Menu() {
                 Menu()
                 break;
             case '4':
-                console.log("Get All Customers")
-                Menu()
+                GetAllCustomers()
                 break;
             case '5':
                 console.log("Exit")
