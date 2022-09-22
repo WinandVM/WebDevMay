@@ -26,7 +26,7 @@ function Menu(username) {
         switch (result.option) {
             case '1':
                 prompt.get(['income', 'category'], (err, result) => {
-                    if (err) { return onErr(err) }
+                    if (err) { return console.error(err) }
                     BudgetModel.findOneAndUpdate({ username: username }, { $push: { income: { amount: result.income, category: result.category } } })
                         .then(() => {
                             console.log('income added')
@@ -86,7 +86,7 @@ function Menu(username) {
             if (docs.length == 0) {
                 console.log('user not found, creating new user and logging in...')
                 BudgetModel.create({ username: result.username, expenses: [], income: [], balance: 0 }, function (err, small) {
-                    if (err) return handleError(err);
+                    if (err) return console.error(err);
                     setTimeout(() => {
                         Menu(result.username)
                     }, 2000)
