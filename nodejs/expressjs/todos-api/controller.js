@@ -1,3 +1,4 @@
+const TodoModel = require("./model")
 module.exports={
     home: function (req, res) {
         res.send("Welcome to todos restful api v1.0")

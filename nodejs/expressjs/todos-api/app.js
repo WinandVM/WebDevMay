@@ -5,7 +5,9 @@ const app = express()
 const TodoModel = require("./model")
 mongoose.connect(process.env.MONGO_URI, (err) => console.log("connected"))
 const {home,todos,saveTodo,notfound} = require('./controller')
+const cors = require('cors')
 app.use(express.json())
+app.use(cors())
 
 app.get('/', home)
 
