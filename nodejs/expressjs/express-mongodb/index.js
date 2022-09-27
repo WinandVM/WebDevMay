@@ -13,7 +13,9 @@ mongoose.connect('mongodb://localhost:27017/expressmongo',(err)=>{
 
 // create post schema 
 const postSchema = mongoose.Schema({
-    title:String,
+    title:{
+        required:true
+    },
     content:String,
     date:String
 })
