@@ -13,20 +13,25 @@ app.use(bodyParser({
     extended:true
 }))
 
-// middleware
+// check if token exist
+function isTokenExist(req,res,next){
+   // console.log(req.headers.authorization.split(' ')[1])
+   console.log(req.headers['x-access-token'])
+}
+
+// middleware 
 function isUserLogged(req,res,next){
     const {username} = req.query
-    if(username!=='admin'){
-        res.status(401).send('Unauthorized')
+    if(username !=='admin'){
+        res.status(401).send('Fail')
     }else{
         next()
     }
     
-    
 }
 
 // get request
-app.get('/',(req,res)=>{
+app.get('/',isTokenExist,(req,res)=>{
     res.json({id:1,title:'lorem ipsum',body:'lorem ipsum content'})
 })
 
