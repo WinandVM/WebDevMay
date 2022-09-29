@@ -9,6 +9,10 @@ const cors = require('cors')
 app.use(express.json())
 app.use(cors())
 
+function checkKey(req,res,next){
+    
+}
+
 app.get('/', home)
 
 // get all todos
