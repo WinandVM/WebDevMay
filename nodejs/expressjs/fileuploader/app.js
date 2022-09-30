@@ -9,7 +9,8 @@ const server = express()
 // use middlewares
 server.use(cors())
 server.use(express.json())
-
+server.use('/uploads',express.static('./uploads'))
+// http://localhost:4000/uploads/filename.jpg
 server.get('/', (request, response) => {
     response.json({
         message: "Welcome to restful api"
@@ -21,7 +22,19 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => cb(null, file.originalname)
 })
 
-const uploader = multer({ storage })
+const uploader = multer({ 
+    storage,
+    fileFilter:(req,file,callback)=>{
+        let arr = ['image/jpeg','image/jpg','image/png','image/gif']
+        let isValidImg = arr.filter(img=>img===file.mimetype)
+        console.log(isValidImg.length>0)
+        if(isValidImg.length>0){
+            callback(null,true)
+        }else{
+            callback(new Error("Not allowed!!!"))
+        }
+    }
+ })
 
 server.post('/',uploader.single('document'),(request, response) => {
     console.log(request.file.path) // display file location out
